@@ -1,0 +1,32 @@
+name: Daily Health Check
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run health check
+        run: bash scripts/health-check.sh
+        env:
+          SITE_URL: https://heggria.github.io/sbti-lab/
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::SBTI Lab 每日健康检查失败，请检查 Actions 日志"
