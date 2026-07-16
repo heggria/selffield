@@ -1,25 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  base: '/sbti-lab/',
+  base: '/selffield/',
   plugins: [react(), tailwindcss()],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id: string) {
-          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
-            return 'vendor-react'
-          }
-          if (id.includes('node_modules/react-router')) {
-            return 'vendor-router'
-          }
-          if (id.includes('node_modules/zustand')) {
-            return 'vendor-state'
-          }
-        },
-      },
-    },
+    target: 'es2023',
+    sourcemap: true,
+  },
+  test: {
+    environment: 'jsdom',
+    include: ['src/**/*.test.ts'],
   },
 })
