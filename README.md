@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# SelfField
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> See yourself as a field, not a label.<br>
+> 看见完整的自己，而不是接受一个标签。
 
-Currently, two official plugins are available:
+SelfField 是一面会随时间变化的个人镜像。它从真实经历过的选择、关系、回避和意外出发，保留证据、反例、情境与不确定性。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+它不是人格测试，不输出类型、稀有度、排名或永久结论。
 
-## React Compiler
+## 原则
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **揭示，而非裁决**：洞察是可以被确认、修正和否认的假设。
+- **多维，而非分类**：价值、动机、行动、关系与情境不会被压缩成一个标签。
+- **保留矛盾**：同时存在的需要不会被平均成一项分数。
+- **观察变化**：每份理解都有日期，模式只在多个真实时间点之间形成。
 
-## Expanding the ESLint configuration
+## 当前产品
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+一次“照见”从一件具体经历开始：
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. 选择一次决定、关系、回避或意外；
+2. 记录真实发生的事情；
+3. 标记情境、压力与实际行动；
+4. 看见被保护与被压低的两股力量；
+5. 主动寻找反例；
+6. 生成带证据和边界的阶段性镜像；
+7. 逐条确认、修正或否认；
+8. 通过后续记录观察变化。
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+所有记录默认只保存在当前浏览器。用户可以完整导出、恢复或彻底删除数据。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 技术
+
+- React 19.2
+- Vite 8.1（Rolldown + Oxc）
+- TypeScript 6
+- Tailwind CSS 4
+- React Router 7
+- Zustand 5
+- Zod 4
+- Vitest 4
+
+## 本地开发
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+完整验证：
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run check
 ```
+
+## 边界
+
+SelfField 不提供心理诊断，也不应被用于招聘、信贷、保险、风控、伴侣匹配或未成年人监护。它不会秘密读取外部数据，也不会宣称已经掌握“真正的你”。
+
+## License
+
+MIT © Heggria
